@@ -3,8 +3,25 @@ import { TGenderContract } from '../contracts/gender.contract'
 import { IAddressContract } from '../contracts/address.contract'
 import { IRgContract } from '../contracts/rg.contract'
 
+export type TUserModel = {
+  _id: string
+  schoolId: string
+  name: string
+  email: string
+  password: string
+  phone: string
+  cpf: string
+  rg: IRgContract
+  address: IAddressContract
+  birthDate: Date
+  gender: TGenderContract
+  class: string
+  createdAt: Date
+  updatedAt: Date
+}
+
 @Schema()
-export class User extends Document {
+export class User implements TUserModel {
   @Prop({ type: String, required: true })
   public _id!: string
 
