@@ -10,7 +10,7 @@ import {
   generateStringToken,
 } from 'src/shared/utils/generate.util'
 
-export type TRegiserInput = {
+export type TRegisterInput = {
   _id?: string
   schoolId?: string
   name?: string
@@ -27,13 +27,13 @@ export type TRegiserInput = {
   updatedAt?: Date
 }
 
-export class RegisterUseCase implements IUseCaseContract<TRegiserInput> {
+export class RegisterUseCase implements IUseCaseContract<TRegisterInput> {
   public constructor(
     @Inject('S_USER_SERVICE')
-    private readonly repo: UserService<TRegiserInput>,
+    private readonly repo: UserService<TRegisterInput>,
   ) {}
 
-  public async run(dto: TRegiserInput) {
+  public async run(dto: TRegisterInput) {
     const errorMessage: Array<string> = []
 
     const user = await this.repo.find({ cpf: dto.cpf })

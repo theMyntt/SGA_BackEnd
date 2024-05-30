@@ -1,5 +1,5 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common'
-import { RegisterUseCase, TRegiserInput } from '../usecases/register.usecase'
+import { RegisterUseCase, TRegisterInput } from '../usecases/register.usecase'
 
 @Controller('user')
 export class RegisterController {
@@ -9,7 +9,7 @@ export class RegisterController {
   ) {}
 
   @Post('v1/register')
-  public async perform(@Body() dto: TRegiserInput) {
+  public async perform(@Body() dto: TRegisterInput) {
     try {
       return await this.usecase.run(dto)
     } catch {
