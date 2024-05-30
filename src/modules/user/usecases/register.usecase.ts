@@ -23,6 +23,7 @@ export type TRegisterInput = {
   birthDate?: Date
   gender?: TGenderContract
   class?: string
+  isAdmin?: boolean
   createdAt?: Date
   updatedAt?: Date
 }
