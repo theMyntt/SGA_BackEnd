@@ -39,13 +39,31 @@ export class RegisterUseCase implements IUseCaseContract<TRegisterInput> {
     const user = await this.repo.find({ cpf: dto.cpf })
     if (user[0]) errorMessage.push('Usuário já cadastrado.')
 
-    for (const key of Object.keys(dto)) {
-      if (dto[key] === null || dto[key] === undefined) {
+    const requiredKeys = [
+      'schoolId',
+      'name',
+      'email',
+      'password',
+      'phone',
+      'cpf',
+      'rg',
+      'address',
+      'birthDate',
+      'gender',
+      'class',
+    ]
+
+    dto._id = `${generateStringToken()}-${generateIntegerToken()}`
+    dto.createdAt = new Date()
+    dto.updatedAt = new Date()
+
+    for (const key of requiredKeys) {
+      if (dto[key] === null || dto[key] === undefined || dto[key] === '') {
         errorMessage.push(`O campo '${key}' não pode ser nulo`)
       }
     }
 
-    if (errorMessage[0]) return errorMessage
+    if (errorMessage[0]) return JSON.stringify({ message: errorMessage })
 
     dto.email = dto.email.toLowerCase()
 
@@ -53,10 +71,6 @@ export class RegisterUseCase implements IUseCaseContract<TRegisterInput> {
     dto.cpf = dto.cpf.replace('-', '')
 
     dto.rg.state = dto.rg.state.toUpperCase()
-
-    dto._id = `${generateStringToken()}-${generateIntegerToken()}`
-    dto.createdAt = new Date()
-    dto.updatedAt = new Date()
 
     if (!cpfValidator(dto.cpf)) return 'CPF Invalido'
 
