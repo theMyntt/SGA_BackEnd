@@ -12,17 +12,17 @@ import {
 
 export type TRegiserInput = {
   _id?: string
-  schoolId: string
-  name: string
-  email: string
-  password: string
-  phone: string
-  cpf: string
-  rg: IRgContract
-  address: IAddressContract
-  birthDate: Date
-  gender: TGenderContract
-  class: string
+  schoolId?: string
+  name?: string
+  email?: string
+  password?: string
+  phone?: string
+  cpf?: string
+  rg?: IRgContract
+  address?: IAddressContract
+  birthDate?: Date
+  gender?: TGenderContract
+  class?: string
   createdAt?: Date
   updatedAt?: Date
 }
@@ -36,13 +36,16 @@ export class RegisterUseCase implements IUseCaseContract<TRegiserInput> {
   public async run(dto: TRegiserInput) {
     const errorMessage: Array<string> = []
 
+    const user = await this.repo.find({ cpf: dto.cpf })
+    if (user[0]) errorMessage.push('Usuário já cadastrado.')
+
     for (const key of Object.keys(dto)) {
       if (dto[key] === null || dto[key] === undefined) {
         errorMessage.push(`O campo '${key}' não pode ser nulo`)
       }
     }
 
-    if (errorMessage) return errorMessage
+    if (errorMessage[0]) return errorMessage
 
     dto.email = dto.email.toLowerCase()
 
@@ -63,6 +66,12 @@ export class RegisterUseCase implements IUseCaseContract<TRegiserInput> {
       }
     }
 
-    return await this.repo.create(dto)
+    return (await this.repo.create(dto))
+      ? JSON.stringify({
+          message: 'Usuário cadastrado com sucesso!',
+        })
+      : JSON.stringify({
+          message: 'Não foi possível cadastrar o usuário.',
+        })
   }
 }
