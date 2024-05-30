@@ -1,14 +1,11 @@
-import { IUseCaseContract } from 'src/shared/contracts/usecase.contract'
+import { IUseCaseContract } from '@shared/contracts/usecase.contract'
 import { IRgContract } from '../contracts/rg.contract'
 import { IAddressContract } from '../contracts/address.contract'
 import { TGenderContract } from '../contracts/gender.contract'
 import { Inject } from '@nestjs/common'
 import { UserService } from '../services/user.service'
-import { cpfValidator } from 'src/shared/utils/cpfValidator.util'
-import {
-  generateIntegerToken,
-  generateStringToken,
-} from 'src/shared/utils/generate.util'
+import { cpfValidator } from '@utils/cpfValidator.util'
+import { generateIntegerToken, generateStringToken } from '@utils/generate.util'
 
 export type TRegisterInput = {
   _id?: string

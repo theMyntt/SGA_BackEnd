@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
-import { IServiceContract } from 'src/shared/contracts/service.contract'
+import { IServiceContract } from '@shared/contracts/service.contract'
 import { User } from '../schemas/user.schema'
 import { Model } from 'mongoose'
 

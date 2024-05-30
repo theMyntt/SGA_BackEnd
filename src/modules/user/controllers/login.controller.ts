@@ -1,7 +1,7 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common'
 import { LoginUseCase } from '../usecases/login.usecase'
 import { TRegisterInput } from '../usecases/register.usecase'
-import { IControllerContract } from 'src/shared/contracts/controller.contract'
+import { IControllerContract } from '@shared/contracts/controller.contract'
 
 @Controller('user')
 export class LoginController implements IControllerContract<TRegisterInput> {

@@ -1,4 +1,4 @@
-import { cpfValidator } from '../../src/shared/utils/cpfValidator.util'
+import { cpfValidator } from '@utils/cpfValidator.util'
 
 describe('cpfValidator', () => {
   test('Should return true for a valid CPF', () => {

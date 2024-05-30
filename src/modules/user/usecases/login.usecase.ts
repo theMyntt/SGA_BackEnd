@@ -1,4 +1,4 @@
-import { IUseCaseContract } from 'src/shared/contracts/usecase.contract'
+import { IUseCaseContract } from '@shared/contracts/usecase.contract'
 import { TRegisterInput } from './register.usecase'
 import { UserService } from '../services/user.service'
 import { Inject } from '@nestjs/common'
