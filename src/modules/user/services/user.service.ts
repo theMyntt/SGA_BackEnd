@@ -24,7 +24,8 @@ export class UserService<Input> implements IServiceContract<Input> {
       return false
     }
   }
-  public async remove(dto: Input): Promise<boolean> {
+
+  public async remove(): Promise<boolean> {
     throw new Error('not implemented')
   }
 }
