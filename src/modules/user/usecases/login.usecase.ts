@@ -5,7 +5,7 @@ import { Inject } from '@nestjs/common'
 import {
   generateIntegerToken,
   generateStringToken,
-} from 'src/shared/utils/generate.util'
+} from '@shared/utils/generate.util'
 
 export class LoginUseCase implements IUseCaseContract<TRegisterInput> {
   public constructor(
