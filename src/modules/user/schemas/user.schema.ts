@@ -16,6 +16,7 @@ export type TUserModel = {
   birthDate: Date
   gender: TGenderContract
   class: string
+  isAdmin: boolean
   createdAt: Date
   updatedAt: Date
 }
@@ -57,6 +58,9 @@ export class User implements TUserModel {
 
   @Prop({ type: String, required: true })
   public class!: string
+
+  @Prop({ type: Boolean, required: true, default: false })
+  public isAdmin!: boolean
 
   @Prop({ type: Date, required: true })
   public createdAt!: Date
