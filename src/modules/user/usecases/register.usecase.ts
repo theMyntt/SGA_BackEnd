@@ -75,7 +75,7 @@ export class RegisterUseCase implements IUseCaseContract<TRegisterInput> {
 
     if (!cpfValidator(dto.cpf)) return 'CPF Invalido'
 
-    for (let element in dto) {
+    for (const element in dto) {
       if (typeof dto[element] === 'string') {
         dto[element] = dto[element].trimStart().trimEnd()
       }
