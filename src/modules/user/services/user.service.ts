@@ -11,7 +11,7 @@ export class UserService<Input> implements IServiceContract<Input> {
     private readonly model: Model<User>,
   ) {}
 
-  public async find(dto: Input): Promise<any> {
+  public async find(dto: Partial<User>): Promise<any> {
     return await this.model.find(dto)
   }
   public async create(dto: Input): Promise<boolean> {
