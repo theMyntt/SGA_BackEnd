@@ -15,7 +15,14 @@ export class UserService<Input> implements IServiceContract<Input> {
     return await this.model.find(dto)
   }
   public async create(dto: Input): Promise<boolean> {
-    throw new Error('not implemented')
+    try {
+      const newUser = new this.model(dto)
+      await newUser.save()
+
+      return true
+    } catch (error) {
+      return false
+    }
   }
   public async remove(dto: Input): Promise<boolean> {
     throw new Error('not implemented')
