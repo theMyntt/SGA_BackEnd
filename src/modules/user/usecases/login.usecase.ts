@@ -33,8 +33,14 @@ export class LoginUseCase implements IUseCaseContract<TRegisterInput> {
           userName: user.name,
         })
       }
+
+      return JSON.stringify({
+        message: 'Usuário não encontrado.',
+      })
     } catch (error) {
-      return error
+      return JSON.stringify({
+        message: 'Não foi possível realizar o login.',
+      })
     }
   }
 }
