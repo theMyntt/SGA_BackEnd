@@ -29,6 +29,7 @@ export class LoginUseCase implements IUseCaseContract<TRegisterInput> {
             `${generateStringToken()}-${generateIntegerToken()}`,
             `${generateStringToken()}-${generateIntegerToken()}`,
             `${generateStringToken()}-${generateIntegerToken()}`,
+            `${user.isAdmin ? `${generateStringToken()}-${generateIntegerToken()}` : ''}`,
           ],
           userName: user.name,
         })
