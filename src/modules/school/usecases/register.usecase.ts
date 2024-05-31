@@ -1,0 +1,46 @@
+import { IUseCaseContract } from '@shared/contracts/usecase.contract'
+import { TSchoolContract } from '../contracts/school.contract'
+import { Inject } from '@nestjs/common'
+import { SchoolService } from '../services/school.service'
+
+export class RegisterUseCase implements IUseCaseContract<TSchoolContract> {
+  public constructor(
+    @Inject('S_SCHOOL_SERVICE')
+    private readonly repo: SchoolService<TSchoolContract>,
+  ) {}
+
+  public async run(dto: TSchoolContract) {
+    const requiredKeys = [
+      'name',
+      'address.street',
+      'address.number',
+      'address.city',
+      'address.state',
+      'address.country',
+    ]
+
+    const errorMessage: Array<string> = []
+
+    requiredKeys.forEach((key) => {
+      if (!dto[key]) errorMessage.push(`${key} não pode ser nulo.`)
+    })
+
+    if (errorMessage[0])
+      return JSON.stringify({
+        message: errorMessage,
+      })
+
+    try {
+      const result = await this.repo.create(dto)
+      return JSON.stringify({
+        message: result
+          ? 'Usuário cadastrado com sucesso'
+          : 'Não foi possível cadastrar',
+      })
+    } catch {
+      return JSON.stringify({
+        message: 'Erro interno.',
+      })
+    }
+  }
+}
