@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { TGenderContract } from '../contracts/gender.contract'
-import { IAddressContract } from '../contracts/address.contract'
+import { IAddressContract } from '@shared/contracts/address.contract'
 import { IRgContract } from '../contracts/rg.contract'
 
 export type TUserModel = {

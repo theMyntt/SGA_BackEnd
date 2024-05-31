@@ -1,6 +1,6 @@
 import { IUseCaseContract } from '@shared/contracts/usecase.contract'
 import { IRgContract } from '../contracts/rg.contract'
-import { IAddressContract } from '../contracts/address.contract'
+import { IAddressContract } from '@shared/contracts/address.contract'
 import { TGenderContract } from '../contracts/gender.contract'
 import { Inject } from '@nestjs/common'
 import { UserService } from '../services/user.service'
