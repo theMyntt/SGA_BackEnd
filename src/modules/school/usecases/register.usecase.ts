@@ -34,7 +34,7 @@ export class RegisterUseCase implements IUseCaseContract<TSchoolContract> {
         message: errorMessage,
       })
 
-    dto._id = `${generateStringToken()}-${generateIntegerToken()}`
+    dto._id = generateIntegerToken().toString()
     dto.createdAt = new Date()
     dto.updatedAt = new Date()
 
