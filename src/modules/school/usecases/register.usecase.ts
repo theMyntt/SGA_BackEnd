@@ -14,14 +14,7 @@ export class RegisterUseCase implements IUseCaseContract<TSchoolContract> {
   ) {}
 
   public async run(dto: TSchoolContract) {
-    const requiredKeys = [
-      'name',
-      'address.street',
-      'address.number',
-      'address.city',
-      'address.state',
-      'address.country',
-    ]
+    const requiredKeys = ['name', 'address']
 
     const errorMessage: Array<string> = []
 
@@ -42,8 +35,8 @@ export class RegisterUseCase implements IUseCaseContract<TSchoolContract> {
       const result = await this.repo.create(dto)
       return JSON.stringify({
         message: result
-          ? 'Usuário cadastrado com sucesso'
-          : 'Não foi possível cadastrar',
+          ? 'Escola cadastrado com sucesso.'
+          : 'Não foi possível cadastrar a escola.',
       })
     } catch {
       return JSON.stringify({
