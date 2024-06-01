@@ -2,6 +2,10 @@ import { IUseCaseContract } from '@shared/contracts/usecase.contract'
 import { TSchoolContract } from '../contracts/school.contract'
 import { Inject } from '@nestjs/common'
 import { SchoolService } from '../services/school.service'
+import {
+  generateIntegerToken,
+  generateStringToken,
+} from '@shared/utils/generate.util'
 
 export class RegisterUseCase implements IUseCaseContract<TSchoolContract> {
   public constructor(
@@ -29,6 +33,10 @@ export class RegisterUseCase implements IUseCaseContract<TSchoolContract> {
       return JSON.stringify({
         message: errorMessage,
       })
+
+    dto._id = `${generateStringToken()}-${generateIntegerToken()}`
+    dto.createdAt = new Date()
+    dto.updatedAt = new Date()
 
     try {
       const result = await this.repo.create(dto)
