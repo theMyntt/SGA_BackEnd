@@ -1,6 +1,5 @@
 import { Controller, Get, Inject, Param, Query } from '@nestjs/common'
 import { IControllerContract } from '@shared/contracts/controller.contract'
-import { TSchoolContract } from '../contracts/school.contract'
 import { PickUseCase } from '../usecases/pick.usecase'
 
 @Controller('school')
