@@ -1,19 +1,19 @@
 import { IUseCaseContract } from '@shared/contracts/usecase.contract'
-import { TRegisterInput } from './register.usecase'
 import { UserService } from '../services/user.service'
 import { Inject } from '@nestjs/common'
 import {
   generateIntegerToken,
   generateStringToken,
 } from '@shared/utils/generate.util'
+import { UserInformationDTO } from '../dto/user.dto'
 
-export class LoginUseCase implements IUseCaseContract<TRegisterInput> {
+export class LoginUseCase implements IUseCaseContract<UserInformationDTO> {
   public constructor(
     @Inject('S_USER_SERVICE')
-    private readonly repo: UserService<TRegisterInput>,
+    private readonly repo: UserService<UserInformationDTO>,
   ) {}
 
-  public async run(dto: TRegisterInput) {
+  public async run(dto: UserInformationDTO) {
     const filters = {
       email: dto.email?.toLowerCase(),
       password: dto.password,
