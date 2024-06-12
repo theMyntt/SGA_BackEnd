@@ -1,5 +1,5 @@
 import { IUseCaseContract } from '@shared/contracts/usecase.contract'
-import { TSchoolContract } from '../contracts/school.contract'
+import { SchoolInformationDTO } from '../dto/school.dto'
 import { Inject } from '@nestjs/common'
 import { SchoolService } from '../services/school.service'
 import {
@@ -7,13 +7,13 @@ import {
   generateStringToken,
 } from '@shared/utils/generate.util'
 
-export class RegisterUseCase implements IUseCaseContract<TSchoolContract> {
+export class RegisterUseCase implements IUseCaseContract<SchoolInformationDTO> {
   public constructor(
     @Inject('S_SCHOOL_SERVICE')
-    private readonly repo: SchoolService<TSchoolContract>,
+    private readonly repo: SchoolService<SchoolInformationDTO>,
   ) {}
 
-  public async run(dto: TSchoolContract) {
+  public async run(dto: SchoolInformationDTO) {
     const requiredKeys = ['name', 'address']
 
     const errorMessage: Array<string> = []

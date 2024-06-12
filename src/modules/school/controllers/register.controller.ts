@@ -1,11 +1,11 @@
 import { IControllerContract } from '@shared/contracts/controller.contract'
-import { TSchoolContract } from '../contracts/school.contract'
+import { SchoolInformationDTO } from '../dto/school.dto'
 import { Body, Controller, Inject, Post } from '@nestjs/common'
 import { RegisterUseCase } from '../usecases/register.usecase'
 
 @Controller('school')
 export class RegisterController
-  implements IControllerContract<TSchoolContract>
+  implements IControllerContract<SchoolInformationDTO>
 {
   public constructor(
     @Inject('U_REGISTER_USECASE')
@@ -13,7 +13,7 @@ export class RegisterController
   ) {}
 
   @Post('v1/register')
-  public async perform(@Body() dto: TSchoolContract) {
+  public async perform(@Body() dto: SchoolInformationDTO) {
     return await this.usecase.run(dto)
   }
 }

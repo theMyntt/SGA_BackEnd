@@ -1,4 +1,4 @@
-import { TSchoolContract } from '@modules/school/contracts/school.contract'
+import { TSchoolContract } from '@modules/school/dto/school.contract'
 import { RegisterUseCase } from '@modules/school/usecases/register.usecase'
 
 jest.mock('@modules/school/usecases/register.usecase')
