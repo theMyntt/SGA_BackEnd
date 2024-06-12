@@ -1,4 +1,4 @@
-import { TSchoolContract } from '@modules/school/dto/school.contract'
+import { UserInformationDTO } from '@modules/user/dto/user.dto'
 import { RegisterUseCase } from '@modules/school/usecases/register.usecase'
 
 jest.mock('@modules/school/usecases/register.usecase')
@@ -10,7 +10,7 @@ describe('RegisterUseCase', () => {
     registerUseCase = new RegisterUseCase(null)
   })
 
-  const dto: TSchoolContract = {
+  const dto: UserInformationDTO = {
     _id: 'school1',
     name: 'School 1',
     address: {

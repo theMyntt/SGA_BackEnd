@@ -1,24 +1,24 @@
 import { UserService } from '@modules/user/services/user.service'
-import { TRegisterInput } from '@modules/user/usecases/register.usecase'
+import { UserInformationDTO } from '@modules/user/dto/user.dto'
 
 jest.mock('@modules/user/services/user.service')
 
 describe('UserService', () => {
-  let userService: UserService<TRegisterInput>
+  let userService: UserService<UserInformationDTO>
 
   beforeEach(() => {
     userService = new UserService(null) as jest.Mocked<
-      UserService<TRegisterInput>
+      UserService<UserInformationDTO>
     >
   })
 
-  const loginDto: TRegisterInput = {
+  const loginDto: UserInformationDTO = {
     email: 'john.doe@example.com',
     password: 'password123',
     schoolId: 'school1',
   }
 
-  const registerDto: TRegisterInput = {
+  const registerDto: UserInformationDTO = {
     schoolId: 'school1',
     name: 'John Doe',
     email: 'john.doe@example.com',
