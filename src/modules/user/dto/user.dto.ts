@@ -11,7 +11,7 @@ export class UserInformationDTO {
   public phone?: string
   public cpf?: string
   public rg?: IRgContract
-  public address: IAddressContract
+  public address?: IAddressContract
   public birthDate?: Date
   public gender?: TGenderContract
   public class?: string
