@@ -6,32 +6,15 @@ import { Inject } from '@nestjs/common'
 import { UserService } from '../services/user.service'
 import { cpfValidator } from '@utils/cpfValidator.util'
 import { generateIntegerToken, generateStringToken } from '@utils/generate.util'
+import { UserInformationDTO } from '../dto/user.dto'
 
-export type TRegisterInput = {
-  _id?: string
-  schoolId?: string
-  name?: string
-  email?: string
-  password?: string
-  phone?: string
-  cpf?: string
-  rg?: IRgContract
-  address?: IAddressContract
-  birthDate?: Date
-  gender?: TGenderContract
-  class?: string
-  isAdmin?: boolean
-  createdAt?: Date
-  updatedAt?: Date
-}
-
-export class RegisterUseCase implements IUseCaseContract<TRegisterInput> {
+export class RegisterUseCase implements IUseCaseContract<UserInformationDTO> {
   public constructor(
     @Inject('S_USER_SERVICE')
-    private readonly repo: UserService<TRegisterInput>,
+    private readonly repo: UserService<UserInformationDTO>,
   ) {}
 
-  public async run(dto: TRegisterInput) {
+  public async run(dto: UserInformationDTO) {
     const errorMessage: Array<string> = []
 
     const user = await this.repo.find({ cpf: dto.cpf })
