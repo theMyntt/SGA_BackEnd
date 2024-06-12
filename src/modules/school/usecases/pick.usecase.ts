@@ -1,12 +1,12 @@
 import { IUseCaseContract } from '@shared/contracts/usecase.contract'
-import { TSchoolContract } from '../contracts/school.contract'
 import { Inject } from '@nestjs/common'
 import { SchoolService } from '../services/school.service'
+import { SchoolInformationDTO } from '../dto/school.dto'
 
 export class PickUseCase implements IUseCaseContract<string> {
   public constructor(
     @Inject('S_SCHOOL_SERVICE')
-    private readonly repo: SchoolService<TSchoolContract>,
+    private readonly repo: SchoolService<SchoolInformationDTO>,
   ) {}
 
   public async run(id: string) {
