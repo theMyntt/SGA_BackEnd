@@ -1,6 +1,6 @@
+import { UserInformationDTO } from '@modules/user/dto/user.dto'
 import { UserService } from '@modules/user/services/user.service'
 import { LoginUseCase } from '@modules/user/usecases/login.usecase'
-import { TRegisterInput } from '@modules/user/usecases/register.usecase'
 import {
   generateIntegerToken,
   generateStringToken,
@@ -10,10 +10,10 @@ jest.mock('@modules/user/services/user.service')
 jest.mock('@shared/utils/generate.util')
 
 describe('LoginUseCase', () => {
-  let userService: jest.Mocked<UserService<TRegisterInput>>
+  let userService: jest.Mocked<UserService<UserInformationDTO>>
   let loginUseCase: LoginUseCase
 
-  const dto: TRegisterInput = {
+  const dto: UserInformationDTO = {
     schoolId: 'school1',
     name: 'John Doe',
     email: 'john.doe@example.com',
@@ -38,7 +38,7 @@ describe('LoginUseCase', () => {
 
   beforeEach(() => {
     userService = new UserService(null) as jest.Mocked<
-      UserService<TRegisterInput>
+      UserService<UserInformationDTO>
     >
     loginUseCase = new LoginUseCase(userService)
   })

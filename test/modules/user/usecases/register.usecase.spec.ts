@@ -1,26 +1,24 @@
-import {
-  RegisterUseCase,
-  TRegisterInput,
-} from '@modules/user/usecases/register.usecase'
+import { RegisterUseCase } from '@modules/user/usecases/register.usecase'
 import { UserService } from '@modules/user/services/user.service'
 import { generateIntegerToken, generateStringToken } from '@utils/generate.util'
+import { UserInformationDTO } from '@modules/user/dto/user.dto'
 
 jest.mock('@modules/user/services/user.service')
 jest.mock('@utils/generate.util')
 
 describe('RegisterUseCase', () => {
-  let userService: jest.Mocked<UserService<TRegisterInput>>
+  let userService: jest.Mocked<UserService<UserInformationDTO>>
   let registerUseCase: RegisterUseCase
 
   beforeEach(() => {
     userService = new UserService(null) as jest.Mocked<
-      UserService<TRegisterInput>
+      UserService<UserInformationDTO>
     >
     registerUseCase = new RegisterUseCase(userService)
   })
 
   it('should register a new user successfully', async () => {
-    const dto: TRegisterInput = {
+    const dto: UserInformationDTO = {
       schoolId: 'school1',
       name: 'John Doe',
       email: 'john.doe@example.com',
@@ -54,7 +52,7 @@ describe('RegisterUseCase', () => {
   })
 
   it('should not register a user if cpf is invalid', async () => {
-    const dto: TRegisterInput = {
+    const dto: UserInformationDTO = {
       schoolId: 'school1',
       name: 'John Doe',
       email: 'john.doe@example.com',
@@ -84,7 +82,7 @@ describe('RegisterUseCase', () => {
   })
 
   it('should not register a user if required fields are missing', async () => {
-    const dto: TRegisterInput = {
+    const dto: UserInformationDTO = {
       schoolId: 'school1',
       name: 'John Doe',
       email: 'john.doe@example.com',
@@ -120,7 +118,7 @@ describe('RegisterUseCase', () => {
   })
 
   it('should not register a user if user already exists', async () => {
-    const dto: TRegisterInput = {
+    const dto: UserInformationDTO = {
       schoolId: 'school1',
       name: 'John Doe',
       email: 'john.doe@example.com',
