@@ -5,7 +5,7 @@ import { ApiProperty } from '@nestjs/swagger'
 
 export class UserInformationDTO {
   @ApiProperty({
-    readOnly: true
+    readOnly: true,
   })
   public _id?: string
 
@@ -13,7 +13,7 @@ export class UserInformationDTO {
     type: String,
     description: 'The school ID from User',
     example: '5f9888188888888888888888',
-    required: true
+    required: true,
   })
   public schoolId?: string
 
@@ -45,7 +45,7 @@ export class UserInformationDTO {
     type: String,
     description: 'The phone from User',
     example: '1234567890',
-    required: false
+    required: false,
   })
   public phone?: string
 
@@ -53,7 +53,7 @@ export class UserInformationDTO {
     type: String,
     description: 'The CPF from User',
     example: '217.628.880-76',
-    required: false
+    required: false,
   })
   public cpf?: string
 
@@ -61,7 +61,7 @@ export class UserInformationDTO {
     type: String,
     description: 'The RG from User',
     example: '12345678',
-    required: false
+    required: false,
   })
   public rg?: IRgContract
 
@@ -69,7 +69,7 @@ export class UserInformationDTO {
     type: Object,
     description: 'The address from User',
     example: 'Street',
-    required: false
+    required: false,
   })
   public address?: IAddressContract
 
@@ -85,7 +85,7 @@ export class UserInformationDTO {
     type: String,
     description: 'The gender from User',
     example: 'MASCULINE',
-    required: false
+    required: false,
   })
   public gender?: TGenderContract
 
@@ -104,12 +104,12 @@ export class UserInformationDTO {
   public isAdmin?: boolean
 
   @ApiProperty({
-    readOnly: true
+    readOnly: true,
   })
   public createdAt?: Date
 
   @ApiProperty({
-    readOnly: true
+    readOnly: true,
   })
   public updatedAt?: Date
 }
